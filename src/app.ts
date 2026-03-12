@@ -1,10 +1,16 @@
 import express from "express";
+import { getHomePage, postHomePage } from "./controllers/home";
 
 const app = express()
 
-app.get('/', (req, res) => {
-    res.send('<h1>Home page</h1>')
-})
+// body parser
+app.use(express.json())
+// decodeURI in body
+app.use(express.urlencoded({ extended: false }))
+
+app.get('/', getHomePage)
+
+app.post('/', postHomePage)
 
 app.get('/about', (req, res) => {
     res.send('<h1>About page</h1>')
