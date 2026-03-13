@@ -1,5 +1,6 @@
 import express from "express";
-import router from './routes';
+import appRouter from './routes';
+import path from "path";
 
 const app = express()
 
@@ -8,7 +9,9 @@ app.use(express.json())
 // decodeURI in body
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/', router)
+app.use(express.static( path.join(__dirname, '..', 'public') ))
+
+app.use('/', appRouter)
 
 app.listen(3000, () => {
     console.log('server is work...');
