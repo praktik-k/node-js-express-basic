@@ -15,7 +15,7 @@ app.use(express.static( path.join(__dirname, '..', 'public') ))
 
 app.use('/', appRouter)
 
-app.use(errors())
+// app.use(errors())
 
 app.use(errorHandler)
 
